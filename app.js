@@ -8,7 +8,7 @@ const port = process.env.PORT || 3300;
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.status(200).send("<h1>Welocome to the Homepage</h1>");
+  res.status(200).send("<h1>Welcome to the Homepage</h1>");
 });
 
 app.listen(port, () => {
