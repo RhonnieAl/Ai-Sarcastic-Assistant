@@ -7,19 +7,18 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-const aiCall = async () => {
+const aiCall = async (userPrompt) => {
   try {
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
-      messages: [
-        { role: "user", content: "Hi Chatbot. What number comes after 10" },
-      ],
+      messages: [{ role: "user", content: userPrompt }],
       max_tokens: 100,
     });
     console.log(response.data.choices[0].message.content);
+    return response.data.choices[0].message.content;
   } catch (error) {
     console.log(error);
   }
 };
 
-aiCall();
+module.exports = aiCall;
